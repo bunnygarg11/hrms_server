@@ -6,10 +6,10 @@ const departmentRouter = require('./src/api/department/department.router')
 const designationSeeder = require('./src/config/seed/designationseeder')
 const kraAttributesSeeder = require('./src/config/seed/kra_attributesSeeder')
 const adminSeeder= require('./src/config/seed/adminseeder')
-const KraModel= require('./src/api/kraSheets/krasheetRouters')
+const kraRouter= require('./src/api/kraSheets/krasheetRouters')
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 5050
 const cors = require('cors')
 
 
@@ -19,11 +19,12 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use(userRouters)
 app.use(departmentRouter)
+app.use(kraRouter)
 app.use(departmentSeed)
 app.use(designationSeeder)
 app.use(kraAttributesSeeder)
 app.use(adminSeeder)
-app.use(KraModel)
+
 
 app.listen(port, () => {
     console.log('Server is running at port ' + port)
