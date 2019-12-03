@@ -16,6 +16,14 @@ const Addkra=async(req,res)=>{
        return res.send(kra)
 
     }
+    const currentYear=kra.kraSheet[0].date.getFullYear()
+    const currentMonth=kra.kraSheet[0].date.getMonth()
+
+    // console.log(currentMonth==new Date().getMonth());
+    
+    if(currentMonth==new Date().getMonth() && currentYear==new Date().getFullYear()){
+        return res.status(404).send({errmsg:"kra already done"})
+    }
 
     kra.kraSheet.unshift({kraAttributes:req.body.kraAttributes})
     await kra.save()
