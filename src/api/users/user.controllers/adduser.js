@@ -9,8 +9,12 @@ const addUser = async (req, res, next) => {
     }
     try {
         console.log("contr",req.body);
+        const newUser={...req.body}
+        newUser.reportingManager=Number(newUser.reportingManager)
+        console.log(typeof( newUser.reportingManager));
         
-        const user = new User(req.body)
+
+        const user = new User(newUser)
         await user.save()
        res.send({user})
     } catch (e) {

@@ -7,13 +7,20 @@ const Addkra=async(req,res)=>{
 
     let kra=await KraSheetModel.findOne({userId:req.user._id})
     if(!kra){
-        kra=new KraSheetModel({
+        kra=await new KraSheetModel({
             userId:req.user._id,
-            reportingManager:req.user.reportingManager,
+            reportingManagerId:req.user.reportingManager,
             kraSheet:[{kraAttributes:req.body.kraAttributes}]
         })
+        await kra.save()
+       return res.send(kra)
+
     }
-    res.send(kra)
+
+    kra.kraSheet.unshift({kraAttributes:req.body.kraAttributes})
+    await kra.save()
+    res.json(kra)
+    
 }catch(err){
     console.log(err.message);
     res.status(500).send("ha")

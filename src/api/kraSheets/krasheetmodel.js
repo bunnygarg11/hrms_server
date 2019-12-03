@@ -5,16 +5,13 @@ const jwt = require("jsonwebtoken");
 const AutoIncrement = require("mongoose-sequence")(mongoose);
 
 const kraSchema = new mongoose.Schema({
-    _id: {
-        type: mongoose.Types.ObjectId
 
-    },
     userId: {
         type:  Number,
         required: true,
         ref:"User"
     },
-    reportingManager: {
+    reportingManagerId: {
         type: Number,
         ref:"User",
         required:true

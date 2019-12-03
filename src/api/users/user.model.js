@@ -64,6 +64,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: "working"
     },
+    gender:{
+        type:String
+    },
     kraAttributes: {},
     token: {
         type: String
