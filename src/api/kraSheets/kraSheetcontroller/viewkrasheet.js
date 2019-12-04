@@ -10,16 +10,6 @@ const Viewkra=async(req,res)=>{
        return res.status(400).send("No Kra found")
 
     }
-    // const currentYear=kra.kraSheet[0].date.getFullYear()
-    // const currentMonth=kra.kraSheet[0].date.getMonth()
-    
-    // if(currentMonth==new Date().getMonth() && currentYear==new Date().getFullYear()){
-    //     return res.status(404).send({errmsg:"kra already done"})
-    // }
-
-    // kra.kraSheet.unshift({kraAttributes:req.body.kraAttributes})
-    // await kra.save()
-    // console.log("hu");
     
     res.json(kra)
     
