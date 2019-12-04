@@ -43,12 +43,12 @@ const userSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         trim: true,
         required: true,
-        ref: "designation"
+        ref: "Designation"
     },
     department_id: {
         type: mongoose.Schema.Types.ObjectId,
         trim: true,
-        ref: "department"
+        ref: "Department"
     },
     reportingManager: {
         type: Number,
@@ -67,7 +67,11 @@ const userSchema = new mongoose.Schema({
     gender:{
         type:String
     },
-    kraAttributes: {},
+    kraAttributes: [{
+        type:mongoose.Types.ObjectId,
+        ref:'kraAttributes'
+    }
+    ],
     token: {
         type: String
     }

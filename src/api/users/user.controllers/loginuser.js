@@ -4,13 +4,17 @@ const login = async (req, res,next) => {
     try {
         console.log("in login");
 
-        const user = await User.findByCredentials(req.body.email, req.body.password)
+       let user = await User.findByCredentials(req.body.email, req.body.password)
+       
         const token = await user.generateAuthToken()
-        res.send({ user, token })
+        user=await User.findById(user._id).select("-password -__v").populate("kraAttributes designation_id department_id reportingManager",["name"])
+        console.log(user);
+        
+        res.json( user )
 
     } catch (e) {
-        console.log(e);
-        return res.status(400).send()
+        console.log(e.message);
+        return res.status(500).send("server error")
     }
 }
 

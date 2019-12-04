@@ -21,7 +21,25 @@ const kraSchema = new mongoose.Schema({
             type:Date,
             default:new Date()
         },
-        kraAttributes:{}
+        Status:{
+            type:String,
+            default:"Not Approved"
+        },
+
+        kraAttributes:[{
+            Attributesid:{
+                type:mongoose.Types.ObjectId,
+                ref:'kraAttributes'
+            },
+            name:{
+                type:String
+            },
+
+            value:{
+                type:Number
+            }
+        }],
+
     }]
 });
 module.exports=mongoose.model("KraSheetModel",kraSchema)

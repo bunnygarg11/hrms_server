@@ -23,7 +23,7 @@ var mailOptions = {
   from: 'milan.srivastava@mail.vinove.com',
   to:email,
   subject: 'Sending Email using Node.js',
-  text:verify
+  text:`You requested for a password reset, kindly use this ${verify} to reset your password`
 };
 
 transporter.sendMail(mailOptions, function(error, info){

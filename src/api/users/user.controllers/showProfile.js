@@ -1,5 +1,9 @@
+const User=require("../user.model")
 const showme = async (req, res) => {
-    res.send(req.user)
+   
+    const user=await User.findById(req._id).populate("kraAttributes",["name"])
+    console.log(user)
+    res.send(user)
 
 }
 module.exports = { showme }
