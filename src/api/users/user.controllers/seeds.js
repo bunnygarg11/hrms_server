@@ -5,7 +5,8 @@ const Kra=require('../../k.r.a_attributes/k.r.a.attr.model')
 
 const seeds =async(req,res)=>{
     try {
-        let reportingManager=await Admin.find({name:"Manager"}).select("-__v")
+        const designationn=await Designation.findOne({name:"Manager"})
+        let reportingManager=await Admin.find({designation_id:designationn._id.toString()}).select("-__v")
         if(!reportingManager){
             reportingManager=[]
         }

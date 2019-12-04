@@ -4,7 +4,7 @@ var router = express.Router();
 const adminauth = require("../middleware/adminauth");
 const userauth = require("../middleware/userauth");
 
-const { addUser } = require("./user.controllers/adduser");
+
 const { login } = require("./user.controllers/loginuser");
 const { logout } = require("./user.controllers/logoutuser");
 const { showme } = require("./user.controllers/showProfile");
@@ -14,12 +14,12 @@ const { changePass } = require("./user.controllers/changepassword");
 const { seeds } = require("./user.controllers/seeds");
 
 
-router.post("/adduser", [
-    adminauth,
-    check("name","Name is required").not().isEmpty(),
-    check("email","please include valid email").isEmail(),
-    // check("password","Please enter a password with 6 or more characters").isLength({  min:6})
-], addUser);
+// router.post("/adduser", [
+//     adminauth,
+//     check("name","Name is required").not().isEmpty(),
+//     check("email","please include valid email").isEmail(),
+//     // check("password","Please enter a password with 6 or more characters").isLength({  min:6})
+// ], addUser);
 //console.log("kjkduhf")
 router.post("/loginuser", login);
 router.post("/logout", userauth, logout);

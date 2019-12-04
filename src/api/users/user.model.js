@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
     },
     prefix: {
         type: String,
-        default: "v"
+        default: "A"
     },
     name: {
         type: String,
@@ -80,17 +80,7 @@ const userSchema = new mongoose.Schema({
 
 userSchema.plugin(AutoIncrement, { inc_field: "_id", prefix: 'v' });
 
-userSchema.virtual('designation_details', {
-    ref: 'designation',
-    localField: 'designation_id',
-    foreignField: '_id'
-})
 
-userSchema.virtual('department_details', {
-    ref: 'department',
-    localField: 'department_id',
-    foreignField: '_id'
-})
 
 
 userSchema.methods.generateAuthToken = async function () {

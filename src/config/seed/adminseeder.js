@@ -9,7 +9,9 @@ async function func() {
         const obj = {
             name: "Admin",
             email: "admin@gmail.com",
-            designation_id: des_id
+            designation_id: des_id,
+            gender:"Female",
+            reportingManager:"Self"
         };
         const e = new user(obj);
         e.save();
