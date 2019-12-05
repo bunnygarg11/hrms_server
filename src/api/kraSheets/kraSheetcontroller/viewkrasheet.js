@@ -22,3 +22,5 @@ const Viewkra=async(req,res)=>{
 }
 
 module.exports={ Viewkra }
+
+

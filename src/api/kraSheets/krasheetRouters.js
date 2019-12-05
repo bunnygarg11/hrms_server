@@ -10,7 +10,7 @@ const { viewkramanager }=require("../kraSheets/kraSheetcontroller/viewkramanager
 const { updatekramanager }=require("../kraSheets/kraSheetcontroller/updateKraSheet")
 
 router.post("/user/addkra",userauth,Addkra);
-router.get("/user/viewkra",userauth,Viewkra);
+router.get("/user/viewkra/:year",userauth,Viewkra);
 router.get("/manager/viewkra",managerauth,viewkramanager);
 router.post("/manager/updatekra",managerauth,updatekramanager)
 

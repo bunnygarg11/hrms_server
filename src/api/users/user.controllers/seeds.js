@@ -10,11 +10,13 @@ const seeds =async(req,res)=>{
         if(!reportingManager){
             reportingManager=[]
         }
+        reportingManager=[{_id:req.user._id,name:req.user.name},...reportingManager]
+        console.log({_id:req.user._id,name:req.user.name})
         
         const department=await Department.find().select("-__v")
         
         let designation=await Designation.find().select("-__v")
-        designation=designation.filter(des=>des.name!=="Admin")
+        // designation=designation.filter(des=>des.name!=="Admin")
        
         console.log("Designation",designation);
         const kraAttributes=await Kra.find().select("-__v")
@@ -28,6 +30,5 @@ const seeds =async(req,res)=>{
         res.status(500).send("server error")
         
     }
-
 }
 module.exports={seeds}
