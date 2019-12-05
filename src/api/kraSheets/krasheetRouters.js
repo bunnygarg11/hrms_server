@@ -14,7 +14,7 @@ const { viewKramanagerUser }=require("../kraSheets/kraSheetcontroller/viewKraman
 router.post("/user/addkra",userauth,Addkra);
 router.get("/user/viewkra/:year",userauth,Viewkra);
 router.get("/manager/viewkra",common,viewkramanager);
-router.get("/manager/viewkrauser",common,viewKramanagerUser);
+router.get("/manager/viewkrauser/:id",common,viewKramanagerUser);
 router.post("/manager/updatekra",common,updatekramanager)
 
 

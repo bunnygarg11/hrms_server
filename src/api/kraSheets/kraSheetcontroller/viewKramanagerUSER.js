@@ -3,12 +3,9 @@ const viewKramanagerUser=async(req,res)=>{
     console.log("in viewkramanager");
     
     try{
-        const {
-            userId,
-            krasheetId,
-        }=req.body
 
-        const kra=await KraSheetModel.findOne({"userId":userId,"kraSheet._id":krasheetId},{"kraSheet.$":1})
+
+        const kra=await KraSheetModel.findOne({"kraSheet._id":req.params.id},{"kraSheet.$":1})
     if(!kra){
        return res.status(400).send("No Kra found")
 
