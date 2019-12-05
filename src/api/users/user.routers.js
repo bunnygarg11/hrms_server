@@ -17,13 +17,6 @@ const { changePass } = require("./user.controllers/changepassword");
 const { seeds } = require("./user.controllers/seeds");
 
 
-// router.post("/adduser", [
-//     adminauth,
-//     check("name","Name is required").not().isEmpty(),
-//     check("email","please include valid email").isEmail(),
-//     // check("password","Please enter a password with 6 or more characters").isLength({  min:6})
-// ], addUser);
-//console.log("kjkduhf")
 router.post("/loginuser", login);
 router.post("/logout", userauth, logout);
 router.get("/showme", userauth, showme);

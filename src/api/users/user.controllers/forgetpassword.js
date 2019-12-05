@@ -3,9 +3,16 @@ const mailer=require('../../../../utils/mailer')
 const jwt = require("jwt-simple");
 
 const forget=async(req,res,next)=>{
+    console.log("forget",req.body);
+    
     // const user = await User.findByCredentials(req.body.email)
     try{  
         const user=await User.findOne({email:req.body.email})
+        console.log(user);
+        
+        if(!user){
+            return res.status(400).send("Email not exist")
+        }
         const userEmail=user.email
         console.log(userEmail);
 
@@ -13,7 +20,7 @@ const forget=async(req,res,next)=>{
         let time=date.getTime();
         token = jwt.encode({userEmail, time }, "secretKey");
         console.log(token,"mail vala token");
-        const verify=`http://localhost:3000/verify/${token}`
+        const verify=`http://localhost:5050/verify/${token}`
         await mailer(userEmail,verify)
   
         console.log("in forget");
@@ -21,7 +28,7 @@ const forget=async(req,res,next)=>{
         next()
 }catch(err){
     console.log(err.message)
-    res.send("Email does not exist")
+    res.send("catch error")
 }
 }
 
