@@ -7,8 +7,8 @@ const verify=async(req,res,next)=>{
     console.log(userEmail)
     const user=await User.findOne({email:userEmail})
     console.log(user);
-    
-    res.send(user)
+    const password=user.name+2019
+    res.send(`Your previous password   ${password}`)
     // req.email=userEmail
     // req.method="post"
     // res.redirect("http://localhost:5050/changepassword")
