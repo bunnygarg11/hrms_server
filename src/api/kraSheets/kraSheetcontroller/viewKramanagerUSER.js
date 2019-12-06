@@ -10,7 +10,7 @@ const viewKramanagerUser=async(req,res)=>{
        return res.status(400).send("No Kra found")
 
     }
-    res.json({kra})
+    res.json(kra)
     
 }catch(err){
     console.log(err.message);
