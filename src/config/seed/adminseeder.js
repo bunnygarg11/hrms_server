@@ -7,6 +7,9 @@ async function func() {
         const des = await designation.findOne({ name: "Admin" });
         const des_id = await des._id;
         const obj = {
+            //  _id:  { type: Number,
+            // AutoIncrement: true,
+            // default: 100},
             name: "Admin",
             email: "admin@gmail.com",
             designation_id: des_id,
