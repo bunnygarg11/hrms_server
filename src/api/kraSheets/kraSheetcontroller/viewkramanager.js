@@ -23,14 +23,17 @@ const viewkramanager = async (req, res) => {
       .select("-_id -kraSheet.kraAttributes -__v");
       const  month=new Date().getMonth()
       const year=new Date().getFullYear()
-      kra2=kra2.map(e=>{
+      kra2=kra2.filter(e=>{
           console.log(e.kraSheet[0].date.getMonth()==month);
           
           if(e.kraSheet[0].date.getMonth()==month && e.kraSheet[0].date.getFullYear()==year ){
               e.kraSheet.splice(1)
-              console.log(e);
               
-              return e
+              
+              return true
+          }
+          else{
+            return false
           }
       })
     console.log("kra2", kra2);

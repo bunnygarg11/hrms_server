@@ -53,7 +53,7 @@ const login = async (req, res,next) => {
             const status=kra.kraSheet[0].Status
             return res.json( {user,status} )
          }
-         res.json({user,status:"not applied 2"})
+         res.json({user,status:"not applied "})
 
     } catch (e) {
         console.log(e.message);
